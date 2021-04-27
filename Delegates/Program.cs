@@ -4,6 +4,7 @@ namespace Delegates
 {
     public delegate void MyDelegate();
     public delegate void ShowTextDelegate(string text);
+    public delegate int SumDelegate(int x, int y);
 
     class Program
     {
@@ -19,6 +20,10 @@ namespace Delegates
         {
             Console.WriteLine(text);
         }
+        public static int Sum(int x, int y)
+        {
+            return x + y;
+        }
 
         static void Main()
         {
@@ -29,6 +34,10 @@ namespace Delegates
 
             ShowTextDelegate d2 = new ShowTextDelegate(ShowText);
             d2("Hello World...");
+
+            SumDelegate d3 = new SumDelegate(Sum);
+            int result = d3.Invoke(12, 15);
+            Console.WriteLine(result);
         }
     }
 }
